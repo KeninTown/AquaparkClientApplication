@@ -18,12 +18,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/user', (req, res) => {
-  res.render(__dirname+'/templates/user.ejs');
+  res.render(__dirname +'/templates/user.ejs');
 })
 
 app.get('/api/admin', (req, res) => {
-  res.render(__dirname+'/templates/admin.ejs')
+  res.render(__dirname +'/templates/admin.ejs')
 })
+
+app.get('/api/json', (req, res) => {
+  res.json({name: 'KeningTown'})
+});
+
+app.route('/api/user/create')
+  .get((req, res) => {
+    res.render(__dirname +'/templates/userCreate.ejs')
+  })
+  .post((req, res) => {
+    
+  })
+
 
 
 //Connection to DB

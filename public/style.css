@@ -19,14 +19,49 @@ form{
     margin-bottom: 15px;
 }
 
-.user{
+.user, .buttons button{
     font-size:20px;
     color: #EFE9E7;
     border: 1px solid #EFE9E7;
 }
 
-.user:hover{
+.user:hover, .buttons button:hover{
     background:#EFE9E7;
     color:#111344;
 }
 
+.createPerson{
+    color: #EFE9E7;
+}
+
+.form-text{
+    color: #EFE9E7;
+}
+
+.full-name{
+    margin-left: 5%;
+    width:30%;
+    margin: 0 auto;
+}
+
+.buttons{
+    display: flex;   
+    margin-top: 15px;
+}
+
+.buttons a{
+    display: block;
+}
+
+.buttons button {
+    width: 130px;
+    height: 45px;
+}
+
+.full-name label{
+    margin-top: 5px;
+}
+
+.full-name .user{
+    display:inline;
+}

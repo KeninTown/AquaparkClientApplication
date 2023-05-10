@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head')%>
+<body>
+    <h1>Создать нового клиента</h1>
+    <form action="/api/user/create/" method="get" class="createPerson">
+        <div class="full-name">
+            <label for="inputPassword5" class="form-label">ФИО клиента</label>
+            <input required type="text" id="text1" name="fullName" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="Иванов Иван Иванович">
+
+            <label for="inputPassword5" class="form-label">Дата рождения</label>
+            <input required type="text" id="text1" name="dateOfBirth" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="дд.мм.гггг">
+
+            <label for="inputPassword5" class="form-label">Процент скидки</label>
+            <input required type="number" id="text1" name="dateOfBirth" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="0">
+
+            <!-- <div class="d-grid gap-2 col-6 mx-auto buttons">
+                <button type="submit" class="btn btn-outline-secondary user">Создать</button>
+            </div> -->
+            <div class="buttons">
+                <a href="/api/user"><button type="button" class="btn btn-outline-secondary ">Назад</button></a>   
+                <button type="submit" class="btn btn-outline-secondary">Создать</button>
+            </div>
+        </div>
+        
+    </form>
+    
+    <script src="userScript.js"></script>
+</body>
+</html>
