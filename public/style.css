@@ -1,0 +1,32 @@
+body{
+    background-color: #111344;
+    font-family: 'Roboto', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    text-align: center;
+    font-size: 28px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    color: #EFE9E7;
+}
+
+form{
+    margin-bottom: 15px;
+}
+
+.user{
+    font-size:20px;
+    color: #EFE9E7;
+    border: 1px solid #EFE9E7;
+}
+
+.user:hover{
+    background:#EFE9E7;
+    color:#111344;
+}
+
