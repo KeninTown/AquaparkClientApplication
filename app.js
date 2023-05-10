@@ -7,8 +7,6 @@ const app = express();
 app.use('/',express.static(__dirname + '/public'));
 app.use('/api/user', express.static(__dirname + '/public'));
 app.use('/api/admin', express.static(__dirname + '/public'));
-
-
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.set('view engine', 'ejs');
@@ -29,13 +27,17 @@ app.get('/api/json', (req, res) => {
   res.json({name: 'KeningTown'})
 });
 
-app.route('/api/user/create')
+app.route('/api/:role/create')
   .get((req, res) => {
-    res.render(__dirname +'/templates/userCreate.ejs')
+    res.render(__dirname +'/templates/createNewClient.ejs')
   })
   .post((req, res) => {
     
-  })
+})
+
+app.get('/api/admin/amount', (req, res) => {
+  res.render(__dirname +'/templates/adminFullData.ejs')
+})
 
 
 
