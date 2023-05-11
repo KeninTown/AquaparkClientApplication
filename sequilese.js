@@ -58,8 +58,25 @@ const clientsBetweenDates = async (from, to) => {
     } 
 }
 
+const getInfo = async (fullName) =>{
+    try {
+        await sequelize.authenticate();
+
+        const rawData = await allData();
+        const data = [];
+        
+        rawData.forEach(client => {
+            if(fullName === client.full_name)
+                data.push(client)
+        })
+        return data;
+    } catch (error) {
+        console.log(errro);
+    }
+}
+
 // console.log(clientsBetweenDates('13-09-2000', '13-09-2025'));
-module.exports = {clientsBetweenDates, allData};
+module.exports = {clientsBetweenDates, allData, getInfo};
 
 
 

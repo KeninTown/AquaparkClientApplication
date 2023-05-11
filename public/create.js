@@ -7,3 +7,4 @@ btnBack.addEventListener('click', () => {
         document.location.href = '/api/admin';
     else document.location.href = '/api/user';
 })
+

@@ -1,8 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {Connection, Request} = require("tedious");
 require('dotenv').config();
-const {allData, clientsBetweenDates} = require('./sequilese.js');
+const {allData, clientsBetweenDates, getInfo} = require('./sequilese.js');
 
 const app = express();
 
@@ -20,25 +19,19 @@ app.get('/', (req, res) => {
   res.render(__dirname +'/templates/index.ejs');
 });
 
-app.get('/api/admin/info', (req, res) => {
-
+app.get('/api/:role/info', (req, res) => {
+  res.render(__dirname +'/templates/info.ejs');
 })
 
-app.get('/api/user/info', (req, res) => {
-  
+
+app.get('/api/:role/info/data', async (req, res) => {
+  const data = await getInfo(req.query.fullName);
+  res.render(__dirname +'/templates/adminFullData.ejs', {users:data});
 })
 
-app.get('/api/user', (req, res) => {
-  res.render(__dirname +'/templates/user.ejs');
+app.get('/api/:role', (req, res) => {
+  res.render(__dirname +`/templates/${req.params.role}.ejs`);
 })
-
-app.get('/api/admin', (req, res) => {
-  res.render(__dirname +'/templates/admin.ejs')
-})
-
-app.get('/api/json', (req, res) => {
-  res.json({name: 'KeningTown'})
-});
 
 app.route('/api/:role/create')
   .get((req, res) => {
@@ -53,9 +46,7 @@ app.get('/api/admin/amount', (req, res) => {
 })
 
 app.get('/api/admin/amount/data', async (req, res)  =>{
-  console.log('aa');
   const data = await clientsBetweenDates(req.query.from, req.query.to);
-  console.log(data);
   res.render(__dirname +'/templates/adminFullData.ejs', {users:data});
 })
 
