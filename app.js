@@ -2,11 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {Connection, Request} = require("tedious");
 require('dotenv').config();
+const {allData, clientsBetweenDates} = require('./sequilese.js');
 
 const app = express();
+
+
 app.use('/',express.static(__dirname + '/public'));
 app.use('/api/user', express.static(__dirname + '/public'));
 app.use('/api/admin', express.static(__dirname + '/public'));
+app.use('/api/admin/:method', express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.set('view engine', 'ejs');
@@ -14,6 +19,14 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   res.render(__dirname +'/templates/index.ejs');
 });
+
+app.get('/api/admin/info', (req, res) => {
+
+})
+
+app.get('/api/user/info', (req, res) => {
+  
+})
 
 app.get('/api/user', (req, res) => {
   res.render(__dirname +'/templates/user.ejs');
@@ -36,12 +49,26 @@ app.route('/api/:role/create')
 })
 
 app.get('/api/admin/amount', (req, res) => {
-  res.render(__dirname +'/templates/adminFullData.ejs')
+  res.render(__dirname +'/templates/adminBetweenDates.ejs')
+})
+
+app.get('/api/admin/amount/data', async (req, res)  =>{
+  console.log('aa');
+  const data = await clientsBetweenDates(req.query.from, req.query.to);
+  console.log(data);
+  res.render(__dirname +'/templates/adminFullData.ejs', {users:data});
+})
+
+app.get('/api/admin/full', async (req, res) => {
+  const data = await allData();
+  console.log(data);
+  res.render(__dirname +'/templates/adminFullData.ejs', {users:data});
 })
 
 
 
-//Connection to DB
+
+// Connection to DB
 
 
 // const executeSQL = (sql, callback) => {

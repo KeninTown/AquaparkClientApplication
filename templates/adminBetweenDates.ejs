@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head')%>
+<body>
+    <h1>Количество человек посетивших аквапарк</h1>
+    <form action="/api/admin/amount/data" method="get" class="createPerson">
+        <div class="full-name">
+            <label for="inputPassword5" class="form-label">С какой даты</label>
+            <input required type="text" id="text1" name="from" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="дд-мм-гггг">
+
+            <label for="inputPassword5" class="form-label">До какой даты</label>
+            <input required type="text" id="text1" name="to" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="дд-мм-гггг">
+
+            <div class="buttons">
+                <a href="/api/admin"><button type="button" class="btn btn-outline-secondary ">Назад</button></a>   
+                <button type="submit" class="btn btn-outline-secondary">Найти</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -2,20 +2,36 @@
 <html lang="en">
     <%- include('./partials/head')%>
 <body>
-    <h1>Количество человек посетивших аквапарк</h1>
-    <form action="/api/user/create/" method="get" class="createPerson">
-        <div class="full-name">
-            <label for="inputPassword5" class="form-label">ФИО клиента</label>
-            <input required type="text" id="text1" name="fullName" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="Иванов Иван Иванович">
+    <h1>Список посетителей</h1>
+    <table class="table table-hover">
+        <tr>
+            <th>Номер</th>
+            <th>ФИО</th>
+            <th>Дата рождения</th>
+            <th>Процент скидки</th>
+            <th>Название зоны отдыха</th>
+            <th>Начало нахождения в зоне</th>
+            <th>Окончание нахождения в зоне</th >
+        </tr>
 
-            <label for="inputPassword5" class="form-label">Дата рождения</label>
-            <input required type="text" id="text1" name="dateOfBirth" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="дд.мм.гггг">
-
-            <div class="buttons">
-                <a href="/api/admin"><button type="button" class="btn btn-outline-secondary ">Назад</button></a>   
-                <button type="submit" class="btn btn-outline-secondary">Создать</button>
-            </div>
+        <% users.forEach((user, index) => { %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user.full_name %></td>
+                <td><%= user.date_of_birth %></td>
+                <td><%= user.discount_percent %></td>
+                <td><%= user.zone_name %></td>
+                <td><%= new Date(user.start_time).toString()%></td>
+                <td><%= user.end_time %></td>
+            </tr>
+        <% }); %>
+    </table> 
+    <form action="/api/admin/" method="get">
+        <div class="d-grid gap-2 col-6 mx-auto from">
+            <button type="submit" class="btn btn-outline-secondary user">Назад</button>
         </div>
     </form>
+  
+
 </body>
 </html>

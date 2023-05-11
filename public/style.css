@@ -65,3 +65,30 @@ form{
 .full-name .user{
     display:inline;
 }
+
+
+ul{
+    text-decoration: none;
+    color: #EFE9E7;
+    font-size: 18px;
+}
+
+.row{
+    text-decoration: none;
+    padding: 5px;
+}
+
+.head{
+    text-align: center;
+    border:1px solid red
+}
+
+td, th{
+    color: #EFE9E7;
+    text-align: center;
+}
+
+tr:hover{
+    background:#EFE9E7;
+    color:#111344;
+}
