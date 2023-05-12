@@ -3,17 +3,32 @@
     <%- include('./partials/head')%>
 <body>
     <h1>Информация о клиенте</h1>
-    <form action="/api/admin/info/data" method="get" class="createPerson">
-        <div class="full-name">
-            <label for="inputPassword5" class="form-label">ФИО клиента</label>
-            <input required type="text" id="text1" name="fullName" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="Иванов Иван Иванович">
-
-            <div class="buttons">
-                <button type="button" class="btn btn-outline-secondary" id="back">Назад</button>   
-                <button type="submit" class="btn btn-outline-secondary">Найти</button>
+    <%if(role === 'admin') {%>
+        <form action="/api/admin/info/data" method="get" class="createPerson">
+            <div class="full-name">
+                <label for="inputPassword5" class="form-label">ФИО клиента</label>
+                <input required type="text" id="text1" name="fullName" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="Иванов Иван Иванович">
+    
+                <div class="buttons">
+                    <button type="button" class="btn btn-outline-secondary" id="back">Назад</button>   
+                    <button type="submit" class="btn btn-outline-secondary">Найти</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    <%} else {%>
+            <form action="/api/user/info/data" method="get" class="createPerson">
+                <div class="full-name">
+                    <label for="inputPassword5" class="form-label">ФИО клиента</label>
+                    <input required type="text" id="text1" name="fullName" class="form-control" aria-labelledby="passwordHelpBlock" placeholder="Иванов Иван Иванович">
+        
+                    <div class="buttons">
+                        <button type="button" class="btn btn-outline-secondary" id="back">Назад</button>   
+                        <button type="submit" class="btn btn-outline-secondary">Найти</button>
+                    </div>
+                </div>
+            </form>
+        <%}%>
+    
     <script src="create.js"></script>
 </body>
 </html>

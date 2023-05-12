@@ -18,7 +18,7 @@ const sequelize = new Sequelize('aquapark', 'sa', '123', {
 const allData = async () => {
     try {
         await sequelize.authenticate();
-        const data = await sequelize.query('SELECT  full_name, date_of_birth, discount_percent, zone_name, start_time, end_time from Zone_visits join Bracelets on bracelet_id = visited_bracelet_id join Client on client_id = client_id_on_bracelet join Zones on zone_id = visited_zone_id', { type: Sequelize.QueryTypes.SELECT });
+        const data = await sequelize.query('SELECT  full_name, total_cost, date_of_birth, discount_percent, deposit_amount, total_cost, zone_name, start_time, end_time from Zone_visits join Bracelets on bracelet_id = visited_bracelet_id join Client on client_id = client_id_on_bracelet join Zones on zone_id = visited_zone_id', { type: Sequelize.QueryTypes.SELECT });
         return data;
     } catch (error) { 
         console.log(error); 
@@ -54,9 +54,8 @@ const getInfo = async (fullName) =>{
     try {
         await sequelize.authenticate();
 
-        const rawData = await allData();
+        const rawData = await sequelize.query('SELECT  full_name, total_cost, date_of_birth, discount_percent, deposit_amount, total_cost, zone_name, start_time, end_time from Zone_visits join Bracelets on bracelet_id = visited_bracelet_id join Client on client_id = client_id_on_bracelet join Zones on zone_id = visited_zone_id', { type: Sequelize.QueryTypes.SELECT });
         const data = [];
-        
         rawData.forEach(client => {
             if(fullName === client.full_name)
                 data.push(client)

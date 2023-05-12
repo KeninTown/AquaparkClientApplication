@@ -12,6 +12,7 @@ app.use('/api/admin', express.static(__dirname + '/public'));
 app.use('/api/:role/:method', express.static(__dirname + '/public'));
 app.use('/api/admin/:method', express.static(__dirname + '/public'));
 
+
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.set('view engine', 'ejs');
@@ -21,13 +22,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/:role/info', (req, res) => {
-  res.render(__dirname +'/templates/info.ejs');
+  res.render(__dirname +'/templates/info.ejs', {role:req.params.role});
 })
 
 
 app.get('/api/:role/info/data', async (req, res) => {
   const data = await getInfo(req.query.fullName);
-  res.render(__dirname +'/templates/adminFullData.ejs', {users:data});
+  console.log(req.params.role);
+  res.render(__dirname +'/templates/adminFullData.ejs', {users:data, role: req.params.role});
 })
 
 app.get('/api/:role', (req, res) => {

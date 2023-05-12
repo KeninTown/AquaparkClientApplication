@@ -9,6 +9,8 @@
             <th>ФИО</th>
             <th>Дата рождения</th>
             <th>Процент скидки</th>
+            <th>Депозит</th>
+            <th>Общая сумма</th>
             <th>Название зоны отдыха</th>
             <th>Начало нахождения в зоне</th>
             <th>Окончание нахождения в зоне</th >
@@ -20,18 +22,19 @@
                 <td><%= user.full_name %></td>
                 <td><%= user.date_of_birth %></td>
                 <td><%= user.discount_percent %></td>
+                <td><%= user.deposit_amount %></td>
+                <td><%= user.total_cost %></td>
                 <td><%= user.zone_name %></td>
                 <td><%= new Date(user.start_time).toString()%></td>
                 <td><%= user.end_time %></td>
             </tr>
         <% }); %>
     </table> 
-    <form action="/api/admin/" method="get">
-        <div class="d-grid gap-2 col-6 mx-auto from">
-            <button type="submit" class="btn btn-outline-secondary user">Назад</button>
-        </div>
-    </form>
+    
+    <div class="d-grid gap-2 col-6 mx-auto from">
+        <button type="submit" class="btn btn-outline-secondary user" id="back">Назад</button>
+    </div>
   
-
+    <script src="create.js"></script>
 </body>
 </html>
